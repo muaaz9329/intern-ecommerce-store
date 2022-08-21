@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Document</title>
+</head>
+<body onload="startingPrinting()">
+    
+    <div class="container mx-auto px-4 sm:px-8 max-w-3xl">
+        <div class="py-8">
+            <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+                <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                    <table class="min-w-full leading-normal">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                    Product
+                                </th>
+                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                    Price
+                                </th>
+                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                    Amount
+                                </th>
+                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                    Total
+                                </th>
+                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                    Delete
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="parent">
+                            
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                    
+                                </th>
+                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                    
+                                </th>
+                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                    Sub-Total
+                                </th>
+                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                    <p id="sub-total">12</p>
+                                </th>
+                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+                                    
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    function productName (parentElement,data,index){
+    var idMaker=String('item'+index)
+    let tr = document.createElement('tr')
+    tr.classList.add(idMaker)
+    let td = document.createElement('td')
+    td.classList.add('px-5','py-5','border-b','border-gray-200','bg-white','text-sm')
+    let para = document.createElement('p')
+    para.classList.add('text-gray-900','whitespace-no-wrap')
+    para.textContent = String(data.name);
+    para.setAttribute('id',idMaker)
+    td.appendChild(para)
+    tr.appendChild(td)
+    parentElement.append(tr)
+
+    //function calling for rows
+    Price(tr,data)
+    amount(tr,data,index)
+    total(tr,data)
+    DeleteItemBtn(tr,idMaker)
+    }
+
+    function Price (parentElement,data){
+    let td = document.createElement('td')
+    td.classList.add('px-5','py-5','border-b','border-gray-200','bg-white','text-sm')
+    let para = document.createElement('p')
+    para.classList.add('text-gray-900','whitespace-no-wrap')
+    para.textContent = String(data.price);
+    td.appendChild(para)
+    parentElement.append(td)
+    }
+
+    function amount(parentElement,data,index){
+        let td = document.createElement('td')
+        var idMaker=String('item'+index+'Amount')
+    td.classList.add('px-5','py-5','border-b','border-gray-200','bg-white','text-sm')
+    let para = document.createElement('p')
+    para.classList.add('text-gray-900','whitespace-no-wrap')
+    para.textContent = String(data.amount);
+    para.setAttribute('id',idMaker)
+    td.appendChild(para)
+    parentElement.append(td)
+    }
+
+    function total(parentElement,data){
+        let td = document.createElement('td')
+    td.classList.add('px-5','py-5','border-b','border-gray-200','bg-white','text-sm')
+    let para = document.createElement('p')
+    para.classList.add('text-gray-900','whitespace-no-wrap')
+    console.log(data.price)
+    let tempAmount = data.price * data.amount
+    para.textContent =String(tempAmount) ;
+    td.appendChild(para)
+    parentElement.append(td)
+    }
+
+
+
+    function DeleteItemBtn (parentElement,id){
+        let td = document.createElement('td')
+    td.classList.add('px-5','py-5','border-b','border-gray-200','bg-white','text-sm')
+    let button = document.createElement('button')
+    button.classList.add('flex','text-white','bg-indigo-500','border-0','py-2','px-6','focus:outline-none','hover:bg-indigo-600','rounded')
+    button.textContent ="delete Item";
+    let customBtnId = String('DeleteItem('+JSON.stringify(id)+')')
+    button.setAttribute('onclick',customBtnId);
+    td.appendChild(button)
+    parentElement.append(td)
+    }
+
+    function DeleteItem(item){
+        let data = JSON.parse(localStorage.getItem('cart'))
+        let filterValueName = document.getElementById(item).innerText;
+       
+        let filterValueAmount = parseInt(document.getElementById((item+'Amount')).innerText)
+        console.log(filterValueAmount)
+        let newData = data.filter(function(object){
+            return  object.name != filterValueName ||
+            object.amount !=filterValueAmount ;
+                    
+                     
+        });
+        console.log(newData);
+        // console.log(JSON.stringify(newData))
+        localStorage.setItem('cart',JSON.stringify(newData))
+        startingPrinting();
+
+    }
+
+
+
+    function calculateTotal(){
+        let dataFortotal = JSON.parse( localStorage.cart);
+        let totalPrice =[]
+        for(let j=0;j<dataFortotal.length;j++){
+            let tempAmount = dataFortotal[j].price * dataFortotal[j].amount
+            totalPrice.push(parseInt(tempAmount))
+        }
+
+        let price=0;
+        for(var i=0;i<totalPrice.length;i++){
+            price = parseInt( totalPrice[i])+price;
+        }
+        console.log( price)
+    }
+
+
+    
+    
+    const parentElement = document.getElementById('parent')
+
+
+
+    function startingPrinting (){
+    let data = JSON.parse( localStorage.cart);
+    for(var i =0;i<data.length;i++){
+        productName(parentElement,data[i],i);
+    }
+    calculateTotal();   
+    }
+ 
+    
+
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/simplestorage.js@0.2.1/simpleStorage.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class=" grid  bg-cus-pink h-screen">
+    <div class="flex items-center justify-center  ">
+    <div class="flex flex-col max-w-md px-4 py-8 bg-cus-lightPink rounded-lg shadow sm:px-6 md:px-8 lg:px-10">
+        <div class="self-center mb-2 text-xl font-light text-cus-purple sm:text-2xl ">
+            Create a new account
+        </div>
+        <span class="justify-center text-sm text-center text-cus-purple flex-items-center ">
+            Already have an account ?
+            <a href="login.html"  class="text-sm text-blue-500 underline hover:text-blue-700">
+                Sign in
+            </a>
+        </span>
+        <div class="p-6 mt-8">
+            <form action="#">
+                <div class="flex flex-col mb-2">
+                    <div class=" relative ">
+                        <input type="text" id="newFullName" required="true"
+                            class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                            name="pseudo" placeholder="Full name" />
+                    </div>
+                </div>
+                <div class="flex flex-col mb-2">
+                    <div class=" relative ">
+                        <input type="email" id="email" required="true"
+                            class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                            placeholder="Email" />
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 gap-2 mb-2">
+                    <div class=" relative ">
+                        <input type="password" id="password" required="true"
+                            class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                            name="First name" placeholder="Password" />
+                    </div>
+                    <div class=" relative ">
+                        <input type="password" id="confirmPassword" required="true"
+                            class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                            name="Last name" placeholder="Confirm Password" />
+                    </div>
+                </div>
+               
+                <div class="flex w-full my-4">
+                    <button type="button" onclick="SignUp()"
+                        class="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                        Sign up
+                    </button>
+                </div>
+            </form>
+            <div id="alert" class="hidden">
+
+            
+    <div class="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md ">
+        <div class="flex items-center justify-center w-12 bg-emerald-500">
+            <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z"/>
+            </svg>
+        </div>
+        
+        <div class="px-4 py-2 -mx-3 ">
+            <div class="mx-3">
+                <span class="font-semibold text-emerald-500 ">Success</span>
+                <p class="text-sm text-gray-600 ">Your account was registered!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div id="alert2" class="hidden">
+<div class="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md ">
+    <div class="flex items-center justify-center w-12 bg-red-500">
+        <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z"/>
+        </svg>
+    </div>
+    
+    <div class="px-4 py-2 -mx-3">
+        <div class="mx-3">
+            <span class="font-semibold text-red-500 ">Error</span>
+            <p class="text-sm text-gray-600 " id="errorMsg">hello</p>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+        </div>
+    </div>
+</div>
+</div>
+<script src="./script/signup.js">
+    
+    
+    </script>
+
+</body>
+
+</html>
