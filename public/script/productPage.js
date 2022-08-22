@@ -1,11 +1,13 @@
 const CustomAlert2 = document.querySelector("#alert2").classList;
 const CustomAlert = document.querySelector("#alert").classList;
+document.body.classList.add('font1')
 const AlertFunction = () => {
     CustomAlert.remove("hidden")
     setTimeout(() => CustomAlert.add("hidden"), 4000)
 
 
 }
+
 
 function AlertFunction2() {
     CustomAlert2.remove("hidden")

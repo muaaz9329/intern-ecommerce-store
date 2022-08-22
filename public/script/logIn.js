@@ -7,7 +7,7 @@
         const AlertFunction = () => {
             CustomAlert.remove("hidden")
             setTimeout(() => CustomAlert.add("hidden"), 2000)
-            setTimeout(() => location.href = 'login.html', 3000)
+            setTimeout(() => location.href = 'index.html', 3000)
 
         }
 
@@ -31,6 +31,8 @@
             AlertFunction2(msg);
         }
         else if (userEmail === data.email && userPassword === data.password) {
+            const auth = true
+            localStorage.setItem('isAuth',JSON.stringify(auth))
             AlertFunction();
         }
 

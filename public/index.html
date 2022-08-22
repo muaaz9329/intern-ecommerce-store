@@ -5,17 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600&display=swap" rel="stylesheet"> 
-    <script src="https://cdn.jsdelivr.net/npm/simplestorage.js@0.2.1/simpleStorage.min.js"></script>
+
     <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
-    <title>Document</title>
+    <title>HomePage</title>
 </head>
-<body onload="">
+<body onload="checkLogin()">
   
 
 
@@ -25,33 +22,32 @@
       <header class="text-cus-Pink body-font backdrop-blur-3xl">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center  bg-transparent">
           
-          <a class="mr-2 hover:text-gray-900 ">Cart
+          <a class="sm:mr-2 hover:text-gray-900 " href="./cart.html">Cart
             
           </a>
           <svg style="color: white" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16"> <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" fill="white"></path> </svg>
           <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-            
-            <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
            
-              <span class="ml-3 text-xl">AVRO</span>
-            </a>
           </nav>
-          <button class="inline-flex items-center bg-cus-purple border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">UserName
+          <a href="./login.html" id="notLogin" class=" items-center bg-cus-purple border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 inline-flex">Login
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>
-          </button>
+          </a>
+          <a href="./profile.html" id="login" class=" items-center bg-cus-purple border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 uppercase hidden">Muaaz
+            
+          </a>
         </div>
       </header>
         <div class="container mx-auto flex flex-col  items-center justify-center h-screen">
           <div class="w-full md:w-2/3 flex flex-col mb-16 items-center text-center">
-            <h1 class="title-font sm:text-9xl text-8xl mb-4 font1 font-light text-yellow-50">AVRO</h1>
+            <h1 class="title-font sm:text-9xl text-8xl mb-4 font1 font-extralight text-yellow-50 flex"><div class="transition-all duration-200 delay-100 ease-out hover:-translate-y-4">A</div><div class="transition-all delay-100 ease-out duration-200 hover:-translate-y-4">V</div><div class="transition-all delay-100 ease-out duration-200 hover:-translate-y-4">R</div><div class="transition-all delay-100 ease-out duration-200 hover:-translate-y-4">O</div></h1>
           </div>
         </div>
       </section>
         
-      <section class=" font1" id="">
-        <div class="flex flex-wrap mx-auto md:flex-nowrap p-12 md:items-center md:justify-center md:align-middle md:gap-20 -mt-40">
+      <section id="firstEventParent" class=" font1" id="">
+        <div id="firstEvent" class="flex flex-wrap mx-auto md:flex-nowrap p-12 md:items-center md:justify-center md:align-middle md:gap-20 -mt-40 animate__animated invisible">
       
           <a >
             <div class="flex w-full">
@@ -100,26 +96,26 @@
       
     <section class="bg-white font1" id="aboutSection">
         <div class="container flex flex-col items-center px-4 py-12 mx-auto xl:flex-row">
-            <div class="flex justify-center xl:w-1/2">
+            <div id="aboutImg" class="flex justify-center xl:w-1/2 invisible animate__animated">
                 <img class="h-80 w-80 sm:w-[28rem] sm:h-[28rem] flex-shrink-0 object-cover rounded-full" src="https://thumbs.dreamstime.com/b/beautiful-woman-face-make-up-apply-cosmetics-artist-applies-model-blonde-girl-105194107.jpg" alt="">
             </div>
             
-            <div class="flex flex-col items-center mt-6 xl:items-start xl:w-1/2 xl:mt-0">
-                <h2 class="text-3xl font-bold tracking-tight text-cus-pink xl:text-4xl ">
+            <div id="aboutHead" class="flex flex-col items-center mt-6 xl:items-start xl:w-1/2 xl:mt-0 invisible animate__animated">
+                <h2  class="text-3xl font-bold tracking-tight text-cus-pink xl:text-4xl  ">
                     Made with love in california
                 </h2>
 
-                <p class="block font-medium max-w-2xl mt-4 text-xl text-cus-LightPurple ">It's our mission to redefine luxury beauty by creating amazing products at prices that don't break the bank. Dedicated to newness at lightning speed, we imagine, develop, test, and manufacture all under one roof. We pride ourselves on being cruelty-free, wallet-friendly, and keeping our customers at the center of our world</p>
+                <p  class="block font-medium max-w-2xl mt-4 text-xl text-cus-LightPurple  ">It's our mission to redefine luxury beauty by creating amazing products at prices that don't break the bank. Dedicated to newness at lightning speed, we imagine, develop, test, and manufacture all under one roof. We pride ourselves on being cruelty-free, wallet-friendly, and keeping our customers at the center of our world</p>
                 
             </div>
         </div>
     </section>
-    <section class="text-gray-600 body-font   ">
+    <section id="productSection" class="text-gray-600 body-font ">
         <div class="container px-5 py-24 mx-auto">
-            <div class="font1 text-center justify-center font-light py-6">
-                <h1 class="text-gray-800 sm:text-7xl text-5xl">Our Best Product</h1>
+            <div class="font1 text-center justify-center font-extralight py-6">
+                <h1 id="productHead" class="text-gray-800 sm:text-7xl text-5xl transition-all duration-300 delay-150 ease-out hover:scale-105">Our Best Product</h1>
             </div>
-          <div class="flex flex-wrap -m-4">
+          <div id="products" class="flex flex-wrap -m-4 ">
             <div class="  hover:bg-cus-lightPink lg:w-1/4 md:w-1/2 p-4 w-full shadow-lg rounded-xl transition-all duration-200 ease hover:scale-105  ">
               <a class="block relative h-48 rounded overflow-hidden" href="./products/product1.html">
                 <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="./images/lipstick.png">
@@ -208,9 +204,7 @@
           
             <span class="ml-3 text-xl">AVRO</span>
           </a>
-          <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2020 Avro —
-            <a href="https://twitter.com" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@Avro</a>
-          </p>
+          <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2022 Avro — Made by Muaaz Khan          </p>
           <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
             <a class="text-gray-500">
               <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
@@ -238,8 +232,9 @@
         </div>
       </footer>
       
-      <script>
-
+      <script src="./script/homePage.js">
+       
+    
 
       
       </script>
