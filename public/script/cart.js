@@ -46,7 +46,6 @@ function productName (parentElement,data,index){ // puts name of item in table
     td.classList.add('px-5','py-5','border-b','border-gray-200','bg-white','text-sm')
     let para = document.createElement('p')
     para.classList.add('text-gray-900','whitespace-no-wrap')
-    console.log(data.price)
     let tempAmount = data.price * data.amount
     para.textContent =String(tempAmount) ;
     td.appendChild(para)
@@ -72,15 +71,12 @@ function productName (parentElement,data,index){ // puts name of item in table
         let filterValueName = document.getElementById(item).innerText;
        
         let filterValueAmount = parseInt(document.getElementById((item+'Amount')).innerText)
-        console.log(filterValueAmount)
         let newData = data.filter(function(object){
             return  object.name != filterValueName ||
             object.amount !=filterValueAmount ;
                     
                      
         });
-        console.log(newData);
-        // console.log(JSON.stringify(newData))
         localStorage.setItem('cart',JSON.stringify(newData))
         parentElement.innerHTML = ' '
         startingPrinting();

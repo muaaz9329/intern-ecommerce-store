@@ -38,18 +38,14 @@ const ProductPageFunctionality = () => {
             localStorage.setItem("favItem", "[]")
     
         }else{
-            let productName = document.getElementById('productName').innerText;
+            let productName1 = document.getElementById('productName').innerText;
             let favItemColor = JSON.parse(localStorage.getItem('favItem'))
             if(favItemColor.length !=0){
                 for(let k =0;k<favItemColor.length;k++){
-                    if(productName === favItemColor[k].name){
+                    if(productName1 === favItemColor[k].name){
                         document.getElementById('favIco').style.fill = "#FF8FB1"
                         break;
                     }
-                    else{
-                        continue;
-                    }
-                   
                 }
             }
         }
@@ -64,9 +60,9 @@ function addToCart() {
     else{
 
     
-    const productName = document.getElementById("productName").innerText;
-    const productPrice = parseInt(document.getElementById("productPrice").innerText);
-    const noOfProduct = parseInt(document.getElementById("noOfProduct").value);
+    let productName = document.getElementById("productName").innerText;
+    let productPrice = parseInt(document.getElementById("productPrice").innerText);
+    let noOfProduct = parseInt(document.getElementById("noOfProduct").value);
 
     const oldCartData = localStorage.getItem("cart");//[] in string
     var CartData = JSON.parse(oldCartData);//[] in js from string
@@ -76,28 +72,35 @@ function addToCart() {
         amount: noOfProduct
     }
     if(CartData.length != 0){
-        for(let j=0;j<CartData.length;j++){
-            if(proObj.name == CartData[j].name){
+        for(let j=0;j<CartData.length;j++){//2
+            if(proObj.name === CartData[j].name){
                 CartData[j].amount = CartData[j].amount + proObj.amount;
                 break;
-                
             }
-            else{
-                CartData.push(proObj)
+            else {
+                    var datanew = proObj;
             }
         }
+        if(datanew === null){
+        }
+        else if (datanew != null){
+            CartData.push(datanew)
+ 
+        }
         let pushedData = JSON.stringify(CartData)
-        console.log(CartData)
         localStorage.setItem('cart', pushedData)
-        AlertFunction();
+        AlertFunction();  
+        
     }
     else{
         CartData.push(proObj)
         let pushedData = JSON.stringify(CartData)
-        console.log(CartData)
         localStorage.setItem('cart', pushedData)
         AlertFunction();
+
     }
+        
+    
     
    
     }
@@ -108,9 +111,8 @@ function favItem() {
         notLoginFunc();
     }
     else{
-        const productName = document.getElementById("productName").innerText;
-        const link = String(window.location.href);
-        var choise;
+        let productName = document.getElementById("productName").innerText;
+        let link = String(window.location.href);
         var FavData = JSON.parse(localStorage.getItem('favItem'))//[] in js from string
         const favObj = {
             name: productName,
@@ -119,19 +121,36 @@ function favItem() {
         if(FavData.length != 0){
             for(let i=0;i<FavData.length;i++){
                 if(favObj.name == FavData[i].name){
-                    break;
+                    break
+                    
                 }
                 else{
-                    FavData.push(favObj);
+                    var newdata = favObj;
                 }
+            
             }
+            if(newdata === null){
+            }
+            else if (newdata != null){
+                FavData.push(newdata)
+     
+            }
+            let pushedData = JSON.stringify(FavData)
+            localStorage.setItem('favItem', pushedData)
+            document.getElementById('favIco').style.fill = "#FF8FB1"
+            AlertFunction2()
+
         }
         else{
-        FavData.push(favObj);
-        localStorage.setItem('favItem', JSON.stringify(FavData))
-        document.getElementById('favIco').style.fill = "#FF8FB1"
-        AlertFunction2()
+            FavData.push(favObj)
+            let pushedData = JSON.stringify(FavData)
+            localStorage.setItem('favItem', pushedData)
+            document.getElementById('favIco').style.fill = "#FF8FB1"
+            AlertFunction2();
         }
+        
+        
+        
         
     
         
