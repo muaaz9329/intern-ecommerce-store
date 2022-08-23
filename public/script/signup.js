@@ -1,3 +1,25 @@
+
+             const alertBox = document.getElementById('notLogin')
+             const form = document.getElementById('formVisibility')
+             function notLoginFunc(){
+
+                if('isAuth' in localStorage){
+                    form.classList.replace('visible','invisible')
+
+                    alertBox.classList.replace('hidden','flex')
+                    setTimeout(()=>{
+                        location.href = "./index.html"
+                    },4000) 
+                }
+                
+                 
+         }
+                 
+
+
+
+
+
 function SignUp() {
     let checkObj = {
         name: null,

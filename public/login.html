@@ -1,20 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+
+
+    
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Login</title>
+
+
+    <head></head>
+    <body onload="notLoginFunc()">
     <div class="grid  bg-cus-pink h-screen">
+        <div id="notLogin" class="hidden  items-center justify-center justify-items-center h-screen absolute w-screen bg-black bg-opacity-50 ">
+            <div class="shadow-lg rounded-2xl p-4 bg-red-500  w-64 m-auto">
+                <div class="w-full h-full text-center">
+                    <div class="flex h-full flex-col justify-between">
+                       
+                          <p class="text-white  text-md py-2 px-6">
+                            User  Already 
+                            <span class="text-white font-bold">
+                                Logged in
+                            </span>
+                            Redirecting you to homepage
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class=" flex items-center justify-center  ">
             <div
                 class="flex flex-col w-full max-w-md px-4 py-8 bg-cus-lightPink rounded-lg shadow sm:px-6 md:px-8 lg:px-10 ">
                 <div class="self-center mb-6 text-xl font-light text-cus-purple sm:text-2xl">
                     Login To Your Account
                 </div>
-                <div class="mt-8">
+                <div id="formVisibility"  class="mt-8 visible">
                     <form action="#" autoComplete="off">
                         <div class="flex flex-col mb-2">
                             <div class="flex relative ">
@@ -118,12 +142,12 @@
 
 
 
-</head>
+
 <script src="./script/logIn.js">
 
 </script>
 
-<body>
+
 
 </body>
 

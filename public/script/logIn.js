@@ -1,6 +1,26 @@
 
-    function LogIn() {
+             const alertBox = document.getElementById('notLogin')
+             const form = document.getElementById('formVisibility')
+             function notLoginFunc(){
 
+                if('isAuth' in localStorage){
+                    form.classList.replace('visible','invisible')
+
+                    alertBox.classList.replace('hidden','flex')
+                    setTimeout(()=>{
+                        location.href = "./index.html"
+                    },4000) 
+                }
+                
+                 
+         }
+                  
+ 
+ 
+ 
+ function LogIn() {
+ 
+        
         const CustomAlert2 = document.querySelector("#alert2").classList;
         const CustomAlert = document.querySelector("#alert").classList;
 
@@ -35,5 +55,6 @@
             localStorage.setItem('isAuth',JSON.stringify(auth))
             AlertFunction();
         }
+  
 
     }
